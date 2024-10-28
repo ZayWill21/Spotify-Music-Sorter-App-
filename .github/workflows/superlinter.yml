@@ -3,7 +3,7 @@ name: Super-Linter
 on: push
 
 jobs: 
-  super-list:
+  super-lint:
     name: Lint code base
     runs-on: ubuntu-latest
     steps:
@@ -11,9 +11,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run Super-linter
-        uses: github/super-linter@v3
+        uses: github/super-linter@v4
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Debugging
+        run: ls -alh /action/lib/functions/
       
     
